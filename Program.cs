@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ContosoUniversity.Models;
 using Microsoft.Extensions.DependencyInjection;
+using ContosoUniversity.Data;
 
 namespace ContosoUniversity
 {
@@ -31,7 +32,8 @@ namespace ContosoUniversity
                 try
                 {
                     var context = services.GetRequiredService<SchoolContext>();
-                    context.Database.EnsureCreated();
+                    //context.Database.EnsureCreated();
+                    DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {
